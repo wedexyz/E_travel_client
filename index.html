@@ -1,0 +1,180 @@
+<!DOCTYPE html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Pokdarwis</title>
+    <link rel="shortcut icon" href="userimg/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="usercss/leaflet.css"/>
+    <link rel="stylesheet" href="usercss/carousel.css">
+    <link rel="stylesheet" href="usercss/bootstrap.min.css">
+    <!--link font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head> 
+ 
+<audio id="myAudio">
+    <source src="qq.wav" type="audio/ogg">
+</audio>
+<body style="margin:0px" onload="on(),sembunyi1()" >
+
+<div id="loader"></div>
+
+<div id="overlay"onclick="" style="z-index:1030">
+  
+  <div id="sembunyi" class="animate-top"  style="height: 900px; " >
+      <div class="fixed-top" style="background-color: rgba(10, 46, 26, 0.507);margin-top:50px;height: 900px; width: 100%">
+        <div class="container mx-auto animate-top">  
+          <a  onclick="sembunyi1(),off()" style="background:transparent">
+          <h4 style="color:white" >klik tombol marker dan arahkan pada lokasi anda !!</h4>
+          <img src="userimg/tangan.PNG" alt="" style="width:100%;height:250px;margin-top: 100px;margin-bottom: 50px">
+          <h4 style="color:white" >Cari user yang aktif dan tunggu konfirmasi !!</h4>
+            </a>
+        </div>
+
+
+  <div> 
+      <input type="text" id="text_cari" style="display: none">
+  </div>
+
+      </div>      
+  </div>
+
+  <div class="container mx-auto animate-bottom " style="top:100px;padding:0px">
+    <div class="flex-container">
+      <div class="container" style="margin-top:50px"    >                   
+        <img class="card-img-top"style="height:8rem;width: 100%;" src="userimg/motor.jpg" alt="Card image cap">
+          <div class="card-body"  style="margin-top:50px">
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="jasa angkut">Jasa motor</h3>
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="RP.10.000">Rp20.000</h3>        
+            <button type="button" onclick="motor(),sembunyi1()"class="btnCart btn-sm "><a  style="color:inherit;"><i class="text-warning fas fa-shopping-cart"style="font-size:15px;">Pesan</a></i></button>    
+          </div>
+      </div>
+      <div class="container" style="margin-top:50px"    >                   
+        <img class="card-img-top"style="height:8rem;width: 100%;" src="userimg/travel mobil.jpg" alt="Card image cap">
+          <div class="card-body"  style="margin-top:50px">
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="jasa angkut">Jasa mobil</h3>
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="RP.10.000">Rp20.000</h3>        
+            <button type="button" onclick="mobil(),sembunyi1()"class="btnCart btn-sm "><a  style="color:inherit;"><i class="text-warning fas fa-shopping-cart"style="font-size:15px;">Pesan</a></i></button>    
+          </div>
+      </div>
+      <div class="container" style="margin-top:50px"    >                   
+        <img class="card-img-top"style="height:8rem;width: 100%;" src="userimg/bus travel.jpg" alt="Card image cap">
+          <div class="card-body"  style="margin-top:50px">
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="jasa angkut">Jasa Bus</h3>
+            <h3  class="card-text"style="font-size:15px;color:#d2850d" value="RP.10.000">Rp20.000</h3>        
+            <button type="button" onclick="bus(),sembunyi1()"class="btnCart btn-sm "><a  style="color:inherit;"><i class="text-warning fas fa-shopping-cart"style="font-size:15px;">Pesan</a></i></button>    
+          </div>
+      </div>
+    </div>
+    
+    
+  
+  
+  </div>
+
+</div>
+</div>
+
+</div>
+
+    <!---panel navigasi-->
+<header >
+<nav id="nav1"class="navbar navbar-dark navbar-expand-md fixed-top bg-success text-white" style="z-index: 1030">
+     <!--merek dan icon -->
+         <a class="text-white navbar-brand" href="#">
+            <i class="fa fa-cog fa-spin" style="font-size:24px ;color: green"><i class="fa fa-cog fa-spin" style="font-size:24px;color:white"></i></i>Go Pokdarwis
+        </a>
+       
+</nav>
+</header> 
+
+<input id="latitude" type="text" style="display:none" />
+<input id="longitude" type="text"  style="display:none" />
+<div  id="map"  style="height:650px;width:100%;top:50px">			
+</div>
+
+ 
+<nav id="nav2" class="navbar navbar-expand-md fixed-bottom  " style="z-index: 1030; ">
+         
+    
+
+     <!--navigasi bar-->
+  
+         <form class="form-inline mt-2 mt-md-0 mx-auto" >
+            
+            <a class="nav-link  text-white " href="https://crud2019.web.app">
+                <i class="	fa fa-map"style="font-size:24px;padding:5px;color:yellow"></i> 
+            </a>
+             <a class="nav-link  text-white " href="https://jsa2019bwi.web.app">
+                <i class="fas fa-location-arrow"style="font-size:24px;padding:5px;color:white"></i> 
+            </a>
+          
+            <a class="nav-link  text-white " href="https://user-49128.firebaseapp.com">
+                <i class="far fas fa-house-damage"style="font-size:24px;padding: 5px;color:white"></i> 
+            </a>
+         </form>
+     
+ </nav> 
+	<!-- Modal Update -->
+    <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="ModalUpdateLabel"
+    aria-hidden="true" >
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" style="background-color: rgba(0, 248, 112, 0.883)">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalUpdateLabel">kolom pesanan</h5>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="sembunyi1()">Batal</button>
+            </div>
+            <div class="modal-body"> 
+                <h6  style="display: none">ID : </h6>
+                <input class="form-control" type="text" id="T4" style="display: none">
+                <input class="form-control" type="text" id="T4" style="display: none">
+                <input class="form-control" type="text" id="t4_nouser_jsa" style="display: none">
+
+                <h6>Nama Pemesan</h6>
+                <input class="form-control"  type="text" id="t4_namaclient_jsa">
+                <h6>No Telp Anda</h6>
+                <input class="form-control" type="text" id="t4_nocus_jsa">
+                <h6>Koordinat</h6>  
+                <input class="form-control"type="button" id="t4_latclient_jsa" style="border: transparent;background-color:transparent" >
+                <input class="form-control"type="button"id="t4_longclient_jsa"  style="border: transparent;background-color:transparent" >
+                <h6>Pesanan</h6>
+
+                <img id="t4_gambar1_jsa" height="50" alt="Avatar" style="width:50px;margin-left: 40%;display: none; ">
+                      <input class="form-control"type="button"  id="t4_jenis1_jsa" style="border: transparent;background-color:transparent">
+                      <input class="form-control" type="button" id="t4_harga1_jsa"style="border: transparent;background-color:transparent"> 
+                      <h6>Penerima</h6>  
+                      
+                      <img id="myPic" height="50" alt="Avatar" style="width:50px;  border-radius: 50%;margin-left: 40% ">
+                      <input class="form-control"type="button"id="t4_namauser_jsa"style="border: transparent;background-color:transparent" >
+                      <h6>Status</h6>  
+                      <input class="form-control"type="button" id="t4_user_jsa"style="border: transparent;background-color:transparent" >
+            <div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="sembunyi1()">Batal</button>
+  <button type="button" class="btn btn-primary" onclick="updateData_Proses(),CariData(),pauseAudio()">Kirim</button>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+
+    <!--script botstrap-->
+<script src="userjs/firebase.js"></script>
+<script src="userjs/jquery-3.2.1.slim.min.js"></script>
+<script src="userjs/cdn.js"></script>
+<script src="userjs/bootstrap.min.js"></script>
+<!--script sweet allert-->
+
+<!--script javascript-->
+<script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+<script src="userjs/user.js"></script>
+<script src="userjs/map.js"></script>
+<script src="userjs/sound.js"></script>
+<script src="userjs/overlay.js"></script>
+<script src="userjs/menu.js"></script>
+<script src="userjs/hiden.js"></script>
+
+
+</body>
+
+</html>
